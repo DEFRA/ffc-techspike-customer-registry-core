@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+set -e
+projectRoot="$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)"
+
+show_help() {
+  echo "
+    Usage: path/to/ffc-techspike-customer-registry-core [OPTION...]
+    Build customer registry services.
+
+    Options:
+      -h, --help       display this help text
+    "
+}
+
+while :; do
+  case $1 in
+    -h|--help)   # Call a "show_help" function to display a synopsis, then exit.
+      show_help
+      exit
+      ;;
+    *)
+      break
+  esac
+
+  shift
+done
+
+cd "${projectRoot}"
+cd ./ffc-techspike-customer-registry && \
+  docker-compose build
+cd "${projectRoot}"
+cd ./ffc-techspike-customer-registry-web && \
+  docker-compose build
+cd "${projectRoot}"
+cd ./ffc-techspike-customer-registry-data-consumer && \
+  docker-compose build
+cd "${projectRoot}"
+cd ./ffc-techspike-customer-registry-event && \
+  docker-compose build
+cd "${projectRoot}"
+cd ./ffc-techspike-customer-registry-alert && \
+  docker-compose build

@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+# Clone repositories managed by this project
+set -e
+projectRoot=$(a="/$0"; a=${a%/*}; a=${a:-.}; a=${a#/}/; cd "$a/.." || return; pwd)
+
+(
+  cd "${projectRoot}"
+
+  printf "\nCloning repositories\n"
+
+  test -d ffc-techspike-customer-registry\
+    && >&2 echo "The 'ffc-techspike-customer-registry' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-techspike-customer-registry.git
+  test -d ffc-techspike-customer-web\
+    && >&2 echo "The 'ffc-techspike-customer-registry-web' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-techspike-customer-web.git
+  test -d ffc-techspike-customer-registry-data-consumer\
+    && >&2 echo "The 'ffc-techspike-customer-registry-data-consumer' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-techspike-customer-registry-data-consumer.git
+  test -d ffc-techspike-customer-registry-event\
+    && >&2 echo "The 'ffc-techspike-customer-registry-event' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-techspike-customer-registry-event.git
+  test -d ffc-techspike-customer-registry-alert\
+    && >&2 echo "The 'ffc-techspike-customer-registry-alert' repository already exists. Skipping." \
+    || git clone https://github.com/DEFRA/ffc-techspike-customer-alert.git
+)

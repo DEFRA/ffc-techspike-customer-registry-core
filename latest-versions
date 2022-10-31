@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+
+echo 'ffc-techspike-customer-registry' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-techspike-customer-registry/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-techspike-customer-web' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-techspike-customer-web/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-techspike-customer-registry-data-consumer' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-techspike-customer-registry-data-consumer/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-techspike-customer-registry-event' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-techspike-customer-registry-event/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
+
+echo 'ffc-techspike-customer-registry-alert' &&
+  curl --silent "https://api.github.com/repos/defra/ffc-techspike-customer-registry-alert/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/'
