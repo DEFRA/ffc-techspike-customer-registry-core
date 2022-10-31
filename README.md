@@ -6,6 +6,7 @@ Local development support for orchestrating all FFC customer registry microservi
 Ensure you have satisfied the prerequisites of all individual repositories.
 
 ## Customer registry microservices
+
 ### Customer registry graphql api
 
 Query data from both the Azre cognitive service and Azure cosmosdb with the grahql.
